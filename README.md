@@ -20,7 +20,8 @@ and making the whole preprocess automated.
 ## Pipeline
 the pipeline in local machine for testing and evaluation :
 
-![pipeline](readme_res\pipeline.PNG)
+
+![pipeline](https://user-images.githubusercontent.com/85619046/150011116-5588fe82-07d3-4442-a708-1b4ef6ddeb26.PNG)
 
 
 ## Inference
@@ -32,4 +33,5 @@ Inferencing on a real video.
 ## Model output
 final model output on a test video :
 
-<video src='readme_res\download.mp4' width=900/>
+https://user-images.githubusercontent.com/85619046/150010843-f37b1ddc-7d11-465a-b910-92bdd1af6df6.mp4
+
