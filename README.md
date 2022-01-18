@@ -1,12 +1,9 @@
 
 # Multi-future Trajectory Prediction
 
-
-This is the graduation project of ITI(AI-Pro) diploma.
-
-The project is about using the [Multiverse](https://github.com/JunweiLiang/Multiverse) model 
+The project is about using the [Multiverse](https://github.com/JunweiLiang/Multiverse) model to make possible multible-future trajectory prediction for a seen person 
 and making it ready for deploying
-in a slow-driving car by adding the required preprocessing like :
+in a slow self-driving car by adding the required preprocessing like :
 
 - annotation and object tracking (by using YOLOv5 and DeepSORT)
 - semantic segmentation (by using DeepLab) 
