@@ -10,6 +10,7 @@ in a slow-driving car by adding the required preprocessing like :
 
 - annotation and object tracking (by using YOLOv5 and DeepSORT)
 - semantic segmentation (by using DeepLab) 
+
 and making the whole preprocess automated.
 
 
