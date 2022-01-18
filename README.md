@@ -8,8 +8,8 @@ The project is about using the [Multiverse](https://github.com/JunweiLiang/Multi
 and making it ready for deploying
 in a slow-driving car by adding the required preprocessing like :
 
-- annotation and object tracking (by using YOLOv5)
-- semantic segmentation (by using DeepSORT) 
+- annotation and object tracking (by using YOLOv5 and DeepSORT)
+- semantic segmentation (by using DeepLab) 
 and making the whole preprocess automated.
 
 
