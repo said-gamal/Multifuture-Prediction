@@ -20,7 +20,7 @@ and making the whole preprocess automated.
 ## Pipeline
 the pipeline in local machine for testing and evaluation :
 
-![App Screenshot](readme_res\pipeline.PNG)
+![pipeline](readme_res\pipeline.PNG)
 
 
 ## Inference
