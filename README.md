@@ -1,7 +1,7 @@
 
 # Multi-future Trajectory Prediction
 
-The project is about using the [Multiverse](https://github.com/JunweiLiang/Multiverse) model to make possible multible-future trajectory prediction for a seen person 
+The project is about using the [Multiverse](https://github.com/JunweiLiang/Multiverse) model to make possible multiple-future trajectory prediction for a seen person 
 and making it ready for deploying
 in a slow self-driving car by adding the required preprocessing like :
 
