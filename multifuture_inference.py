@@ -39,6 +39,7 @@ parser.add_argument("--cap_reg", action="store_true")
 
 parser.add_argument("--gpuid", type=int, default=0)
 parser.add_argument("--obs_length", type=int, default=8)
+parser.add_argument("--track_id", type=int)
 
 # ------------------- basic model parameters
 parser.add_argument("--emb_size", type=int, default=128)
@@ -183,7 +184,7 @@ def get_inputs(args, traj_files, gt_trajs):
   for traj_file in traj_files:
     traj_id = os.path.splitext(os.path.basename(traj_file))[0]
     # scene, moment_idx, x_agent_pid, camera = traj_id.split("_")
-    x_agent_pid = 10
+    x_agent_pid = args.track_id
 
     # load all features
     traj_data = load_traj(traj_file)
