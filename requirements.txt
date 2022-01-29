@@ -1,5 +1,6 @@
 # pip install -r requirements.txt
 
+scikit-learn
 tensorflow-gpu==1.15
 matplotlib>=3.2.2
 numpy>=1.18.5

@@ -11,6 +11,9 @@ os.environ["KMP_DUPLICATE_LIB_OK"]="TRUE"
 import sys
 sys.path.insert(0, './yolov5')
 
+from sklearn.linear_model import Ridge
+from sklearn.preprocessing import PolynomialFeatures
+from sklearn.pipeline import make_pipeline
 import numpy as np
 from yolov5.utils.augmentations import letterbox
 from yolov5.models.common import DetectMultiBackend
@@ -50,6 +53,33 @@ def get_video_frames(video_path):
                 out_file.write(img_lst_str)
             cap.release()
             return frames
+
+def fix_annotations(annotations_list):
+    x, y1, y2 = [], [], []
+    max_frame_id = max([d['frame_id'] for d in annotations_list])
+    agent_list = [d for d in annotations_list if d['is_x_agent']]
+    track_id = agent_list[0]['track_id']
+    # get agent frame_ids and bbox
+    for d in agent_list:
+        x.append(d['frame_id'])
+        y1.append(d['bbox'][0])
+        y2.append(d['bbox'][1])
+    # prepare data for the regression models
+    x = np.array(x)
+    x = x[:, np.newaxis]
+    # initiate the models
+    model1 = make_pipeline(PolynomialFeatures(6), Ridge(alpha=0.05))
+    model1.fit(x, y1)
+    model2 = make_pipeline(PolynomialFeatures(6), Ridge(alpha=0.05))
+    model2.fit(x, y2)
+    # fill the missing values by the models
+    for frame_id in range(max_frame_id):
+        if not frame_id in x:
+            pred1 = model1.predict(np.array(frame_id).reshape(-1, 1))[0]
+            pred2 = model2.predict(np.array(frame_id).reshape(-1, 1))[0]
+            missed_dict = {'class_name': 'Person', 'is_x_agent': 1, 'bbox': [pred1, pred2, 30, 70], 'frame_id': frame_id, 'track_id': track_id}
+            annotations_list.append(missed_dict)
+    return annotations_list
 
 def get_video_annotations(captured_frames, agent_track_id):
     annotation=[]
@@ -144,5 +174,6 @@ if __name__ == "__main__":
     video_frames = get_video_frames(args.video_path)
     video_name = os.path.splitext(os.path.basename(args.video_path))[0]
     annotation = get_video_annotations(video_frames, agent_track_id=args.track_id)
+    annotation = fix_annotations(annotation)
     with open(f"{video_name}_annotations.json", "w") as outfile:
         outfile.write(str(annotation).replace('\'', '\"'))
