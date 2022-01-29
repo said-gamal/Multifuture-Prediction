@@ -47,7 +47,7 @@ multiverse-models/multiverse_single18.51_multi168.9_nll2.6/00/best/ test_video_o
 --obs_len 10 --emb_size 32 --enc_hidden_size 256 --dec_hidden_size 256 --use_scene_enc --scene_id2name \
 scene36_64_id2name_top10.json --scene_feat_path seg_36x64/test_video --scene_h 36 --scene_w 64 \
 --scene_conv_kernel 3 --scene_conv_dim 64 --grid_strides 2,4 --use_grids 1,0 --num_out 20 \
---diverse_beam --diverse_gamma 0.01 --fix_num_timestep 1 --gpuid 0
+--diverse_beam --diverse_gamma 0.01 --fix_num_timestep 1 --gpuid 0 --track_id 10
 ```
 
 This will save the model output files `test_video_output.traj.p` and `test_video_output.prob.p` in the root folder.
